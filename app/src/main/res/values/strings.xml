@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">WikiMediaSearch</string>
+
+    <string name="search_string_label">Enter string</string>
+    <string name="action_settings">Settings</string>
+    <string name="search_button">Search</string>
+    <string name="web_response">Web Response</string>
+</resources>

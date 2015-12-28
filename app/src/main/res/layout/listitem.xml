@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:padding="5dp"
+    android:orientation="horizontal">
+
+    <!-- android:padding="1dp"
+    android:paddingLeft="1dp"
+    android:paddingRight="1dp" -->
+
+    <!-- page id Label -->
+
+    <TextView
+        android:id="@+id/pagetitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingBottom="1dip"
+        android:paddingTop="1dip"
+        android:textColor="#44bd00"
+        android:textSize="10sp"
+        android:textStyle="bold" />
+
+
+    <TextView
+        android:id="@+id/pageid"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/pagetitle"
+        android:paddingBottom="1dip"
+        android:textSize="5sp"
+        android:textColor="#adadad"
+        android:layout_centerInParent="true" />
+
+    <ImageView
+        android:id="@+id/imgview"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:layout_below="@+id/pageid"
+        android:layout_marginRight="1dp"/>
+
+</RelativeLayout>
