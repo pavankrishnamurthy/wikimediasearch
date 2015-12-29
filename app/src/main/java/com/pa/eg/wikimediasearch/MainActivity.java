@@ -42,7 +42,7 @@ public class MainActivity extends ActionBarActivity {
     TextView webResponse;
     ArrayList<HashMap<String, String>> pageList;
     GridView lv;
-    String baseUrl = "https://en.wikipedia.org/w/api.php?action=query&prop=pageimages&format=json&piprop=thumbnail&pithumbsize=100&pilimit=100&generator=prefixsearch&gpssearch=";
+    String baseUrl = "https://en.wikipedia.org/w/api.php?action=query&prop=pageimages&format=json&piprop=thumbnail&pithumbsize=50&pilimit=100&generator=prefixsearch&gpssearch=";
     int activeSearch = 0;
 
     @Override
@@ -84,8 +84,8 @@ public class MainActivity extends ActionBarActivity {
                             runOnUiThread(new Runnable () {
                                 @Override
                                 public void run() {
-                                    Log.d("MainActivity", "runnable running activesearch : " +
-                                            activeSearch + "string: " + searchString);
+                                    Log.d("MainActivity", "runnable activesearch : " +
+                                            activeSearch + " string: " + searchString);
                                     if (activeSearch == 0 ) {
                                         Toast msg = Toast.makeText(getApplicationContext(),
                                                 "searching string: " + searchString,
@@ -101,6 +101,7 @@ public class MainActivity extends ActionBarActivity {
                 }
             }
         });
+
         getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_HIDDEN);
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
     }
@@ -129,7 +130,6 @@ public class MainActivity extends ActionBarActivity {
     public void searchWikiImages(String searchWord) {
         android.util.Log.d("MainActivity","Searching:  " + searchWord);
         String wikiUrl = null;
-
         pageList = new ArrayList<HashMap<String, String>>();
 
         if(searchWord.matches("")) {
@@ -143,7 +143,7 @@ public class MainActivity extends ActionBarActivity {
         }
 
         hideKeyboard(this);
-        if (wikiUrl !=null ) {
+        if (wikiUrl != null ) {
             ConnectivityManager connMgr = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
             NetworkInfo networkInfo = connMgr.getActiveNetworkInfo();
             if (networkInfo != null && networkInfo.isConnected()) {
@@ -171,7 +171,7 @@ public class MainActivity extends ActionBarActivity {
             super.onPreExecute();
             //searchActive = true;
             progressDialog = new ProgressDialog(MainActivity.this);
-            progressDialog.setMessage("Please wait...");
+            progressDialog.setMessage("Downloading ...");
             progressDialog.setCancelable(false);
             progressDialog.show();
 
@@ -209,7 +209,6 @@ public class MainActivity extends ActionBarActivity {
     public String parseJson(String jsonString) {
         try {
             JSONObject jsonObj = new JSONObject(jsonString);
-
             JSONObject query = jsonObj.getJSONObject("query");
             JSONObject pages = query.getJSONObject("pages");
 

@@ -26,7 +26,7 @@ public class WebDownloader {
             conn.setDoInput(true);
             conn.connect();
             int response = conn.getResponseCode();
-            Log.d("WebDownLoader", "The response is: " + response);
+            Log.d("WebDownLoader", "response: " + response);
             is = conn.getInputStream();
 
             String contentAsString = getString(is);

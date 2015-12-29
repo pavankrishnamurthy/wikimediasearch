@@ -5,12 +5,6 @@
     android:padding="5dp"
     android:orientation="horizontal">
 
-    <!-- android:padding="1dp"
-    android:paddingLeft="1dp"
-    android:paddingRight="1dp" -->
-
-    <!-- page id Label -->
-
     <TextView
         android:id="@+id/pagetitle"
         android:layout_width="wrap_content"
