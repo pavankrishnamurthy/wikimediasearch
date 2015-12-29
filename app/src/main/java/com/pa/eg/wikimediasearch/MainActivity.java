@@ -42,7 +42,7 @@ public class MainActivity extends ActionBarActivity {
     TextView webResponse;
     ArrayList<HashMap<String, String>> pageList;
     GridView lv;
-    String baseUrl = "https://en.wikipedia.org/w/api.php?action=query&prop=pageimages&format=json&piprop=thumbnail&pithumbsize=50&pilimit=100&generator=prefixsearch&gpssearch=";
+    String baseUrl = "https://en.wikipedia.org/w/api.php?action=query&prop=pageimages&format=json&piprop=thumbnail&pithumbsize=100&pilimit=50&generator=prefixsearch&gpssearch=";
     int activeSearch = 0;
 
     @Override
