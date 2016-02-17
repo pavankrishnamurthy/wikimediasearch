@@ -3,6 +3,7 @@ package com.pa.eg.wikimediasearch;
 import android.app.Activity;
 import android.app.ProgressDialog;
 import android.content.Context;
+import android.content.Intent;
 import android.content.pm.ActivityInfo;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
@@ -17,6 +18,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.WindowManager;
 import android.view.inputmethod.InputMethodManager;
+import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.GridView;
@@ -42,7 +44,7 @@ public class MainActivity extends ActionBarActivity {
     TextView webResponse;
     ArrayList<HashMap<String, String>> pageList;
     GridView lv;
-    String baseUrl = "https://en.wikipedia.org/w/api.php?action=query&prop=pageimages&format=json&piprop=thumbnail&pithumbsize=100&pilimit=50&generator=prefixsearch&gpssearch=";
+    String baseUrl = "https://en.wikipedia.org/w/api.php?action=query&prop=pageimages&format=json&piprop=thumbnail&pithumbsize=500&pilimit=50&generator=prefixsearch&gpssearch=";
     int activeSearch = 0;
 
     @Override
@@ -53,6 +55,27 @@ public class MainActivity extends ActionBarActivity {
         searchString = (EditText) findViewById(R.id.search_string);
         webResponse = (TextView) findViewById(R.id.responseString);
         lv = (GridView)findViewById(R.id.gridView);
+
+        lv.setOnItemClickListener(new AdapterView.OnItemClickListener(){
+            public void onItemClick(AdapterView<?> parent, View v, int position, long id) {
+                //ImageItem item = (ImageItem) parent.getItemAtPosition(position);
+                Object obj = parent.getItemAtPosition(position);
+                HashMap<String, String> pageMap = (HashMap<String, String>)obj;
+
+                String title = pageMap.get("title");
+                String url = pageMap.get("imageSource");
+
+                //Toast.makeText(getApplicationContext(),title , Toast.LENGTH_SHORT).show();
+                //Create intent
+                Intent intent = new Intent(MainActivity.this, FullImageActivity.class);
+                intent.putExtra("title", title);
+                intent.putExtra("image", url);
+
+                //Start details activity
+                startActivity(intent);
+            }
+
+        });
 
         searchString.addTextChangedListener(new TextWatcher() {
             Timer timer;
